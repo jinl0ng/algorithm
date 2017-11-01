@@ -16,12 +16,25 @@ void printListReversingly_Recursively(ListNode* pHead);
 
 int main(void)
 {
+    ListNode* pTmp= nullptr;
+    ListNode** pHead = &pTmp;
+    std::cout<<"pHead init"<<std::endl;
+    for(int i=0; i<=5; ++i)
+    {
+        AddToTail(pHead, i);
+        AddToTail(pHead, i+1);
+    } 
+    std::cout<<"headnum: "<<(*pHead)->m_nKey<<std::endl;
+    printListReversingly_Iteratively(*pHead);
+    std::cout<<"and"<<std::endl;
+    std::cout<<"headnum: "<<(*pHead)->m_nKey<<std::endl;
+    printListReversingly_Recursively(*pHead);
+
     return 0;
 }
 
 void AddToTail(ListNode** pHead, int value)
 {
-    //init
     ListNode* pAdd = new ListNode();
     pAdd->m_nKey = value;
     pAdd->m_pNext = nullptr;
@@ -33,7 +46,10 @@ void AddToTail(ListNode** pHead, int value)
     else
     {
         ListNode* pTmp = *pHead;
-        for(pTmp; pTmp->m_pNext!=nullptr; pTmp=pTmp->m_pNext);
+        while(pTmp->m_pNext!=nullptr)
+        {
+            pTmp = pTmp->m_pNext;
+        }
         pTmp->m_pNext = pAdd;
     }
 }
@@ -73,9 +89,28 @@ void printListReversingly_Iteratively(ListNode* pHead)
         return;
     else
     {
-        std::stack<ListNode*> nodeStack;
+        std::stack<ListNode* > nodeStack;
         for(ListNode* pTmp=pHead; pTmp!=nullptr; pTmp=pTmp->m_pNext)
             nodeStack.push(pTmp);
-        
+        ListNode* pTmp = nullptr;
+        while(!nodeStack.empty())
+        {
+            pTmp = nodeStack.top();
+            std::cout<<pTmp->m_nKey<<' ';
+            nodeStack.pop();
+        }
+    }
+}
+
+
+
+void printListReversingly_Recursively(ListNode* pHead)
+{
+    if(pHead == nullptr);
+    else
+    {
+        if(pHead->m_pNext!=nullptr)
+            printListReversingly_Recursively(pHead->m_pNext);
+        std::cout<<pHead->m_nKey<<' ';
     }
 }
