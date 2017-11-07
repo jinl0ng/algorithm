@@ -14,7 +14,10 @@ int Min(int data[], int length)
     while(start<end)
     {
         if(end-start==1)
-            return data[end];
+        {
+            mid = end;
+            break;
+        }
 
         mid = (start+end) / 2;
         if(data[mid]>data[start])
@@ -23,23 +26,26 @@ int Min(int data[], int length)
             end = mid;
         else if(data[mid]==data[start] && data[mid]==data[end])
         {
-            int min = data[start];
+            int min = start;
             for(int i=start+1; i<=end; ++i)
             {
-                if(min>data[i]) 
-                    min = data[i];
+                if(data[min]>data[i]) 
+                    min = i;
             }
-            return min;
+            mid = min;
+            break;
         }
     }
-    return 0;
+    return data[mid];
 }
 
 int main()
 {
-    int test[10] = {7,8,9,10,11,1,2,3,4,4};
+    int test1[10] = {7,8,9,10,11,1,2,3,4,4};
     int test2[5] = {1,0,1,1,1};
-    std::cout << Min(test, 10) << std::endl;
+    int * test3 = nullptr;
+    std::cout << Min(test1, 10) << std::endl;
     std::cout << Min(test2, 5) << std::endl;
+    std::cout << Min(test3, 0) << std::endl;
     return 0;
 }
