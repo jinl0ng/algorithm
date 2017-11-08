@@ -1,6 +1,6 @@
 #include <assert.h>
 #include <iostream>
-#include <math.h>
+#include <math.h> //pow
 
 
 bool PowerStatus = false;
