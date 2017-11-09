@@ -1,5 +1,6 @@
 #include <assert.h>
 #include <iostream>
+#include <iomanip> //setw
 #include <math.h> //pow
 
 
@@ -82,15 +83,20 @@ int main()
     int exponent = -10;
     while(exponent<=10)
     {
-        std::cout << "------------------------------" << std::endl;
-        std::cout << "base: " << base
+        std::cout << "--------------------------------------------" << std::endl;
+        std::cout << std::setw(12) 
+                  << "base: " << base
                   << "    "
+                  << std::setw(12) 
                   << "exponent: " << exponent
                   << std::endl;
-        std::cout << Power_Iteratively(base, exponent)
+        std::cout << std::setw(12) 
+                  << Power_Iteratively(base, exponent)
                   << "    "
+                  << std::setw(12) 
                   << Power_Recursively(base, exponent)
                   << "    "
+                  << std::setw(12) 
                   << pow(base, exponent)
                   << std::endl;
         base += 0.5;
