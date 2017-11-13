@@ -3,8 +3,19 @@
 #include <iostream>
 
 
+void SizeEqual(std::string& str1, std::string& str2) {
+  if (str1.size()>str2.size()) {
+    str2 = std::string(str1.size()-str2.size(), '0') + str2;
+  } else if (str1.size()<str2.size()) {
+    str1 = std::string(str2.size()-str1.size(), '0') + str1;
+  }
+  assert(str1.size()==str2.size());
+  return;
+}
+
+
 std::string lstrip(std::string str, char c) {
-  if(str.size<=0) return str;
+  if(str.size()<=0) return str;
 
   if(str[0]==c)
     return std::string(str, 1);
@@ -32,9 +43,27 @@ bool InputError(std::string str) {
 
 
 std::string BigNumAddCore(std::string str1, std::string str2) {
-  if (str1.size()>str2.size()) {
-    str2 = std::string(str1.size()-str2.size())
+  SizeEqual(str1, str2);
+  std::string ans(str1.size(), '0');
+  int nSum = 0;
+  int takeOver = 0;
+  for(int i=str1.size()-1; i>=0; --i) {
+    nSum = str1[i] - '0' + str2[i] - '0' + takeOver; 
+    if (nSum>=10) {
+      takeOver = 1;
+      nSum -= 10;
+    } else {
+      takeOver = 0;
+    }
+    ans[i] = nSum;
   }
+  if (takeOver==1) ans.insert(0, 1, '1');
+  return ans;
+}
+
+
+std::string BigNumMinusCore(std::string str1, std::string str2) {
+  SizeEqual(str1, str2);
 
 }
 
