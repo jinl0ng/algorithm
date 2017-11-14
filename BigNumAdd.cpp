@@ -130,9 +130,9 @@ std::string BigNumAdd(std::string str1, std::string str2) {
     ans = '-' + BigNumAddCore(std::string(str1, 1),
                               std::string(str2, 1));
   } else if (str1[0]=='-'&&str2[0]!='-') {
-    ans = BigNumMinusCore(str1, std::string(str2, 1));
-  } else if (str1[0]!='-'&&str2[0]=='-') {
     ans = BigNumMinusCore(str2, std::string(str1, 1));
+  } else if (str1[0]!='-'&&str2[0]=='-') {
+    ans = BigNumMinusCore(str1, std::string(str2, 1));
   } else {
     ans = BigNumAddCore(str1, str2);
   }
@@ -154,15 +154,15 @@ int main() {
   std::cout << BigNumAdd("-1234567891999",
                          "45678241345")
             << std::endl;
-  // std::cout << BigNumAdd("-1234567891999",
-                         // "-45678241345")
-            // << std::endl;
-  // std::cout << BigNumAdd("-12sd34567891999",
-                         // "45678241345")
-            // << std::endl;
-  // std::cout << BigNumAdd("-1234567891999",
-                         // "4-5678241345")
-            // << std::endl;
+  std::cout << BigNumAdd("-1234567891999",
+                         "-45678241345")
+            << std::endl;
+  std::cout << BigNumAdd("-12sd34567891999",
+                         "45678241345")
+            << std::endl;
+  std::cout << BigNumAdd("-1234567891999",
+                         "4-5678241345")
+            << std::endl;
 
   return 0;
 }
