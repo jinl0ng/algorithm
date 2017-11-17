@@ -1,3 +1,6 @@
+#include <iostream>
+
+
 struct ListNode
 {
     int m_nKey;
@@ -33,25 +36,23 @@ void RemoveNode(ListNode** pHead, int value)
         return;
     else
     {
-        ListNode* pTmp = *pHead;
-        while(pTmp->m_pNext!=nullptr && pTmp->m_pNext->m_nKey!=value)
-        {
-            pTmp = pTmp->m_pNext;
+      for (ListNode** pCur=pHead; pCur;) {
+        ListNode* tmp = *pCur;
+        if (tmp->m_nKey==value) {
+          *pCur = tmp->m_pNext;
+          delete tmp;
+        } else {
+          pCur =  &tmp->m_pNext;
         }
-        if(pTmp->m_pNext==nullptr && pTmp->m_pNext->m_nKey==value)
-        {
-            *pHead = nullptr;
-            delete pTmp;
-        }
-        else if(pTmp->m_pNext==nullptr && pTmp->m_pNext->m_nKey!=value)
-            return;
-        else
-        {
-            ListNode* pDel = pTmp->m_pNext;
-            pTmp->m_pNext = pDel->m_pNext;
-            delete pDel;
-        }
+      }
     }
 }
 
 
+void PrintList(ListNode** pHead) {
+  if (*pHead==nullptr) return;
+
+  for (ListNode* pCur=*pHead; pCur; pCur=pCur->m_pNext) {
+    std::cout << pCur->m_nKey << std::endl;
+  }
+}

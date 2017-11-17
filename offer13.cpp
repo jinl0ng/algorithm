@@ -1,10 +1,5 @@
 #include <assert.h>
-
-
-struct ListNode {
-  int m_nValue;
-  ListNode* m_pNext;
-};
+#include "List.h"
 
 
 void DeleteNode(ListNode** pHead, ListNode*pToBeDeleted) {
@@ -12,7 +7,7 @@ void DeleteNode(ListNode** pHead, ListNode*pToBeDeleted) {
 
   if (pToBeDeleted->m_pNext!=nullptr) {
     ListNode* pTmp = pToBeDeleted->m_pNext;
-    pToBeDeleted->m_nValue = pTmp->m_nValue;
+    pToBeDeleted->m_nKey = pTmp->m_nKey;
     pToBeDeleted->m_pNext = pTmp->m_pNext;
     delete pTmp;
   } else if(*pHead==pToBeDeleted) {
@@ -27,4 +22,20 @@ void DeleteNode(ListNode** pHead, ListNode*pToBeDeleted) {
     delete pToBeDeleted;
     pToBeDeleted = nullptr;
   }
+}
+
+
+int main() {
+  ListNode* pTmp = nullptr;
+  ListNode** pHead = &pTmp;
+  AddToTail(pHead, 1);
+  AddToTail(pHead, 4);
+  AddToTail(pHead, 3);
+  AddToTail(pHead, 4);
+  AddToTail(pHead, 1);
+  PrintList(pHead);
+  DeleteNode(pHead, (*pHead)->m_pNext);
+  std::cout << "test" << std::endl;
+  PrintList(pHead);
+  return 0;
 }
