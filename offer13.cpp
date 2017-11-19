@@ -3,7 +3,7 @@
 
 
 void DeleteNode(ListNode** pHead, ListNode*pToBeDeleted) {
-  assert(pHead!=nullptr&&pToBeDeleted!=nullptr);
+  assert(pHead!=nullptr&&*pHead!=nullptr&&pToBeDeleted!=nullptr);
 
   if (pToBeDeleted->m_pNext!=nullptr) {
     ListNode* pTmp = pToBeDeleted->m_pNext;
@@ -35,7 +35,6 @@ int main() {
   AddToTail(pHead, 1);
   PrintList(pHead);
   DeleteNode(pHead, (*pHead)->m_pNext);
-  std::cout << "test" << std::endl;
   PrintList(pHead);
   return 0;
 }

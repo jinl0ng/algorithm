@@ -4,7 +4,7 @@
 
 
 ListNode* LastKNode(ListNode** pHead, unsigned k) {
-  assert(pHead!=nullptr&&*pHead!=nullptr&&k>0);
+  assert(pHead!=nullptr&&k>0);
 
   unsigned count = 1;
   ListNode* ahead = *pHead;
@@ -24,7 +24,6 @@ ListNode* LastKNode(ListNode** pHead, unsigned k) {
 int main() {
   ListNode* pTmp = nullptr;
   ListNode** test = &pTmp;
-  AddToTail(test, 1);
   AddToTail(test, 2);
   AddToTail(test, 3);
   AddToTail(test, 4);

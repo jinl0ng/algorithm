@@ -1,4 +1,5 @@
 #include <iostream>
+#include <assert.h>
 
 
 struct ListNode
@@ -49,10 +50,10 @@ void RemoveNode(ListNode** pHead, int value)
 }
 
 
-void PrintList(ListNode** pHead) {
+void PrintList(ListNode** &pHead) {
   if (*pHead==nullptr) return;
 
-  for (ListNode* pCur=*pHead; pCur; pCur=pCur->m_pNext) {
+  for (ListNode* pCur=*pHead; pCur!=nullptr; pCur=pCur->m_pNext) {
     std::cout << pCur->m_nKey << std::endl;
   }
 }
