@@ -2,8 +2,9 @@
 #include <assert.h>
 
 
-struct ListNode
+class ListNode
 {
+  public:
     int m_nKey;
     ListNode* m_pNext;
 };
