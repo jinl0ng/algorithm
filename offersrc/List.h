@@ -5,6 +5,8 @@
 class ListNode
 {
   public:
+    ListNode(int key, ListNode* nxt):m_nKey(key),m_pNext(nxt) {}
+    ListNode(){}
     int m_nKey;
     ListNode* m_pNext;
 };
@@ -51,7 +53,7 @@ void RemoveNode(ListNode** pHead, int value)
 }
 
 
-void PrintList(ListNode** &pHead) {
+void PrintList(ListNode** pHead) {
   if (*pHead==nullptr) return;
 
   for (ListNode* pCur=*pHead; pCur!=nullptr; pCur=pCur->m_pNext) {
