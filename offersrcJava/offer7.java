@@ -17,7 +17,7 @@ public class offer7<Item> {
     private Stack<Item> stack1;
     private Stack<Item> stack2;
     
-    public offer7 () {
+    public offer7() {
         stack1 = new Stack<Item>();
         stack2 = new Stack<Item>();
     }
@@ -31,7 +31,7 @@ public class offer7<Item> {
         public Stack() {
             head = null;
         }
-        public void push (Item item) {
+        public void push(Item item) {
             if (head == null) {
                 head = new Node<Item>();
                 head.data = item;
@@ -52,7 +52,7 @@ public class offer7<Item> {
         }
         public boolean isEmpty() {return head == null;}
     }
-    public void push (Item item){
+    public void push(Item item){
         if (stack2.isEmpty()) {
             stack1.push(item);
         } else {
@@ -71,7 +71,7 @@ public class offer7<Item> {
         return stack2.pop();
     }
 
-    public static void main (String [] args) {
+    public static void main(String [] args) {
         offer7<Integer> test = new offer7<Integer>();
         int n = 5;
         for (int i = 0; i < n; i++)
